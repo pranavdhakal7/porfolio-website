@@ -39,10 +39,19 @@ $(document).ready(function () {
 // emailjs to mail contact form data// emailjs to mail contact form data
 
 
+// emailjs to mail contact form data// emailjs to mail contact form data
+
 $("#contact-form").submit(function(event) {
     emailjs.init("R1IwRdJ7pxr53wsmc");
 
-    emailjs.sendForm('service_rbp8mxb', 'template_07o0w6s', '#contact-form')
+    var formData = {
+      user_name: $("input[name='name']").val(),
+      email_id: $("input[name='email']").val(),
+      phone: $("input[name='phone']").val(),
+      message: $("textarea[name='message']").val()
+    };
+
+    emailjs.send('service_rbp8mxb', 'template_07o0w6s', formData)
       .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
         document.getElementById("contact-form").reset();
@@ -52,14 +61,9 @@ $("#contact-form").submit(function(event) {
         alert("Form Submission Failed! Try Again");
       });
     event.preventDefault();
-  });
-
-
-
-
+});
 
 // emailjs to mail contact form data
-
 
 });
 
