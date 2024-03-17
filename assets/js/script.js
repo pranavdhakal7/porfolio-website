@@ -28,6 +28,7 @@ $(document).ready(function () {
             }
         });
     });
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
     // smooth scrolling
     $('a[href*="#"]').on('click', function (e) {
@@ -36,17 +37,19 @@ $(document).ready(function () {
             scrollTop: $($(this).attr('href')).offset().top,
         }, 500, 'linear')
     });
-// emailjs to mail contact form data// emailjs to mail contact form data
-
-
+    
+ function convertToLowercase(input) {
+        input.value = input.value.toLowerCase();
+    }
+    
 // emailjs to mail contact form data// emailjs to mail contact form data
 
 $("#contact-form").submit(function(event) {
     emailjs.init("R1IwRdJ7pxr53wsmc");
 
     var formData = {
-      user_name: $("input[name='name']").val(),
-      email_id: $("input[name='email']").val(),
+      name: $("input[name='name']").val(),
+      email: $("input[name='email']").val(),
       phone: $("input[name='phone']").val(),
       message: $("textarea[name='message']").val()
     };
@@ -201,20 +204,6 @@ document.onkeydown = function (e) {
     }
 }
 
-// Start of Tawk.to Live Chat
-
-    var Tawk_API = Tawk_API || {},
-        Tawk_LoadStart = new Date();
-    (function () {
-        var s1 = document.createElement("script"),
-            s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/65f136209131ed19d97952ec';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-// End of Tawk.to Live Chat
 
 
 /* ===== SCROLL REVEAL ANIMATION ===== */
